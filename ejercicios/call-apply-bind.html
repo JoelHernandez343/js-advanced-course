@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>
+      Function.prototype.call, Function.prototype.apply, Function.prototype.bind
+    </title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <ul>
+      <li><button class="call-to-action">Aprender</button></li>
+      <li><button class="call-to-action">Aprender Más</button></li>
+      <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+    </ul>
+
+    <script>
+      function greetings() {
+        console.log(`Hello, I'm ${this.name} ${this.lastName}`);
+      }
+
+      function walk(meters, direction) {
+        console.log(`${this.name} walks ${meters}m ${direction}`);
+      }
+
+      const person = {
+        name: 'Rebeca',
+        lastName: 'García',
+      };
+
+      greetings.call(person);
+
+      walk.call(person, 100, 'backwards');
+      walk.apply(person, [100, 'backwards']);
+
+      const person2 = {
+        name: 'Joel',
+        lastName: 'Hernández',
+      };
+
+      const person2greetings = greetings.bind(person2);
+      person2greetings();
+
+      const buttons = document.getElementsByClassName('call-to-action');
+
+      Array.prototype.forEach.call(
+        buttons,
+        button => (button.onclick = () => alert('Nunca pares de aprender'))
+      );
+    </script>
+  </body>
+</html>

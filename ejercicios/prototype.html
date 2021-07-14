@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>Prototype</title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      // function Hero(name) {
+      //   const hero = {
+      //     name,
+      //   };
+
+      //   hero.greeting = function () {
+      //     console.log(`Hello, I'm ${this.name}`);
+      //   };
+
+      //   return hero;
+      // }
+
+      // const zelda = Hero('Zelda');
+      // zelda.greeting();
+
+      // const link = Hero('Link');
+      // link.greeting();
+
+      // const heroMethods = {
+      //   greeting: function () {
+      //     console.log(`Hello, I'm ${this.name}`);
+      //   },
+      // };
+
+      // function Hero(name) {
+      //   const hero = {
+      //     name,
+      //   };
+
+      //   hero.greeting = heroMethods.greeting;
+
+      //   return hero;
+      // }
+
+      // const zelda = Hero('Zelda');
+      // zelda.greeting();
+
+      // const link = Hero('Link');
+      // link.greeting();
+
+      const heroMethods = {
+        greeting: function () {
+          console.log(`Hello, I'm ${this.name}`);
+        },
+      };
+
+      function Hero(properties) {
+        const hero = { ...heroMethods, ...properties };
+
+        // hero.name = properties.name;
+
+        console.log(hero);
+
+        return hero;
+      }
+
+      const zelda = Hero({ name: 'Zelda' });
+      zelda.greeting();
+
+      const link = Hero({ name: 'Link' });
+      link.greeting();
+    </script>
+  </body>
+</html>
