@@ -22,6 +22,7 @@ MediaPlayer.prototype.togglePlay = function () {
 };
 
 MediaPlayer.prototype.mute = function () {
+  console.log(this);
   this.media.muted = true;
 };
 
@@ -34,8 +35,26 @@ MediaPlayer.prototype.toggleMute = function () {
 };
 
 MediaPlayer.prototype._initPlugins = function () {
+  const player = {
+    play: () => this.play(),
+    pause: () => this.pause(),
+    mute: () => this.mute(),
+    unmute: () => this.unmute(),
+    media: this.media,
+    get muted() {
+      return this.media.muted;
+    },
+    set muted(value) {
+      if (value) {
+        this.mute();
+      } else {
+        this.unmute();
+      }
+    },
+  };
+
   this.plugins.forEach(plugin => {
-    plugin.run(this);
+    plugin.run(player);
   });
 };
 
