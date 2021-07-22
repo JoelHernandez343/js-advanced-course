@@ -18,7 +18,6 @@ self.addEventListener('fetch', e => {
 
 const precache = async () => {
   const cache = await caches.open(VERSION);
-  cache.addAll(['/', '/index.html', '/assets/index.js', '/assets/index.css']);
 };
 
 const cachedResponse = async request => {
